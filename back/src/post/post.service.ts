@@ -13,7 +13,9 @@ export class PostService {
     private commentRepository: Repository<CommentEntity>,
   ) {}
   async findAll(): Promise<PostEntity[]> {
-    return this.postRepository.find({ relations: ['comments'] });
+    return (await this.postRepository.find({ relations: ['comments'] })).sort(
+      (a, b) => b.id - a.id,
+    );
   }
   async findOne(id: number): Promise<PostEntity[]> {
     return await this.postRepository.find({

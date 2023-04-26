@@ -1,8 +1,10 @@
+import { ErrorBox } from "./Error.styled";
+
 function Error() {
   return (
-    <div className="alert alert-danger" role="alert">
+    <ErrorBox>
       "Error in fetching"
-    </div>
+    </ErrorBox>
   );
 }
 

@@ -1,10 +1,12 @@
+import { LoaderDiv } from "./Loader.styled";
+
 function Loader() {
   return (
-    <div className="d-flex justify-content-center">
+    <LoaderDiv>
       <div className="spinner-boarder" role="status">
         <span className="visually-hidden">Loading...</span>
       </div>
-    </div>
+    </LoaderDiv>
   );
 }
 

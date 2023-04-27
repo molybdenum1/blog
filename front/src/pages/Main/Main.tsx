@@ -1,15 +1,17 @@
 import { useState } from "react";
 import Card from "../../components/card/Card";
 import Error from "../../components/error/Error";
-import MyForm from "../../components/form/Form";
+import AddNewPostForm from "../../components/forms/AddNewPostForm";
 import Loader from "../../components/loader/Loader";
 import { useGetPostsQuery } from "../../store/posts/posts.api";
 import { IPost } from "../../types";
-import { Button } from "../../components/form/Form.styled";
+import { Button } from "../../ui";
 
 function MainPage() {
   const [showModal, setShowModal] = useState(false);
   const { data, isError, isLoading, isSuccess } = useGetPostsQuery("");
+  console.log(data);
+
   let postContent;
 
   if (isLoading) {
@@ -23,7 +25,11 @@ function MainPage() {
   return (
     <div className="row">
       <div className="col-md-4 offset-md-*">
-        {showModal? <MyForm showModal={setShowModal}/> : <Button onClick={()=> setShowModal(true)}>Add Post</Button> }
+        {showModal ? (
+          <AddNewPostForm showModal={setShowModal} />
+        ) : (
+          <Button onClick={() => setShowModal(true)}>Add Post</Button>
+        )}
       </div>
       <div className="col-lg-8">
         <div className="row">{postContent}</div>

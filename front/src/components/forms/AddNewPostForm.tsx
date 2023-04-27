@@ -1,23 +1,33 @@
 import React, { useState } from "react";
-import { Button, Form, Input, Label, Textarea } from "./Form.styled";
+import { Form } from "../../ui";
+import { Button, Input, Label, Textarea } from "../../ui/index";
 import { useAddNewPostMutation } from "../../store/posts/posts.api";
 
-function MyForm({showModal}: {showModal: (value: boolean | ((prevVar: boolean) => boolean)) => void}) {
+function AddNewPostForm({
+  showModal,
+}: {
+  showModal: (value: boolean | ((prevVar: boolean) => boolean)) => void;
+}) {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-    const [addNewPost, response] = useAddNewPostMutation();
+  const [addNewPost] = useAddNewPostMutation();
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
     let formData = {
-        title, content
-    }
-   addNewPost(formData).unwrap().then(()=>{
-    setTitle('');
-    setContent('');
-    showModal(false);
-   }).then((error) => console.log(error))
+      title,
+      content,
+    };
+    addNewPost(formData)
+      .unwrap()
+      .then(() => {
+        setTitle("");
+        setContent("");
+        showModal(false);
+      })
+      .then((error) => console.log(error));
     console.log("Submitted!", title, content);
+    window.location.reload()
   };
 
   return (
@@ -44,4 +54,4 @@ function MyForm({showModal}: {showModal: (value: boolean | ((prevVar: boolean) =
   );
 }
 
-export default MyForm;
+export default AddNewPostForm;

@@ -13,7 +13,7 @@ export const postsApi = createApi({
     getPost: builder.query<IPost[], string>({
       query: (id: string) => `posts/${id}`,
     }),
-    addNewPost: builder.mutation({
+    addNewPost: builder.mutation<IPost[], {title: string, content: string}>({
       query: (payload) => ({
         url: "posts",
         method: "POST",
@@ -23,6 +23,25 @@ export const postsApi = createApi({
         },
       }),
     }),
+    updatePost: builder.mutation({
+      query: (payload) => ({
+        url: `posts/${payload.id}`,
+        method: 'PUT',
+        body: payload.body
+      })
+    }),
+    deletePost: builder.mutation({
+      query: (id) => ({
+        url: `posts/${id}`,
+        method: "DELETE",
+      }),
+    }),
   }),
 });
-export const { useGetPostsQuery, useGetPostQuery, useAddNewPostMutation } = postsApi;
+export const {
+  useGetPostsQuery,
+  useGetPostQuery,
+  useAddNewPostMutation,
+  useDeletePostMutation,
+  useUpdatePostMutation
+} = postsApi;

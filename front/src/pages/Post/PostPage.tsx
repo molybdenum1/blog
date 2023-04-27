@@ -15,7 +15,7 @@ function PostPage() {
     postContent = <Loader />;
   } else if (isSuccess) {
     postContent = (
-        <Post data={data}/>
+        <Post data={data[0]}/>
     );
   } else if (isError) {
     postContent = <Error />;

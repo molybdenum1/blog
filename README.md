@@ -1,4 +1,4 @@
-To run app you should: _
+To run app you should: __
  -clone it from repo
  -change directory to `back/` and install dependecies with `npm install`
  -change directory to `front/` and install dependecies with `npm install`

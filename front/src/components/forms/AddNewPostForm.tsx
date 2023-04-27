@@ -27,7 +27,7 @@ function AddNewPostForm({
       })
       .then((error) => console.log(error));
     console.log("Submitted!", title, content);
-    window.location.reload()
+    window.location.reload();
   };
 
   return (

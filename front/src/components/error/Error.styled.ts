@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const ErrorBox = styled.div`
     background-color: palevioletred;
@@ -8,4 +8,4 @@ export const ErrorBox = styled.div`
     margin-top: 100px;
     font-size: 20pt;
     margin: 100px 100px;
-`
+`;

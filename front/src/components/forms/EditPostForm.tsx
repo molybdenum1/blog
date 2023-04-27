@@ -4,28 +4,26 @@ import { useUpdatePostMutation } from "../../store/posts/posts.api";
 import { IPost } from "../../types";
 
 interface editFormProps {
-    data: IPost
-    setShowModal: (value: boolean | ((prevVar: boolean) => boolean)) => void;
+  data: IPost;
+  setShowModal: (value: boolean | ((prevVar: boolean) => boolean)) => void;
 }
 
-function EditPostForm({data, setShowModal}: editFormProps) {
-    const [title, setTitle] = useState(data.title);
-    const [content, setContent] = useState(data.content);
-    const [updatePost] = useUpdatePostMutation();
+function EditPostForm({ data, setShowModal }: editFormProps) {
+  const [title, setTitle] = useState(data.title);
+  const [content, setContent] = useState(data.content);
+  const [updatePost] = useUpdatePostMutation();
 
-
-    const handleSubmitEdit = (event: React.FormEvent) => {
-        updatePost({
-            id: data.id,
-            body: {
-                title,
-                content
-            }
-        })
-        setShowModal(false);
-        window.location.reload();
-    
-      }
+  const handleSubmitEdit = (event: React.FormEvent) => {
+    updatePost({
+      id: data.id,
+      body: {
+        title,
+        content,
+      },
+    });
+    setShowModal(false);
+    window.location.reload();
+  };
   return (
     <Form onSubmit={handleSubmitEdit}>
       <Label htmlFor="title">Title</Label>

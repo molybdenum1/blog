@@ -7,23 +7,19 @@ import Post from "../../components/post/Post";
 function PostPage() {
   const { id } = useParams();
 
-  const { data, isError, isLoading, isSuccess } = useGetPostQuery(id ?? '');
+  const { data, isError, isLoading, isSuccess } = useGetPostQuery(id ?? "");
 
   let postContent;
 
   if (isLoading) {
     postContent = <Loader />;
   } else if (isSuccess) {
-    postContent = (
-        <Post data={data[0]}/>
-    );
+    postContent = <Post data={data[0]} />;
   } else if (isError) {
     postContent = <Error />;
   }
 
-  return <div>
-    {postContent}
-  </div>;
+  return <div>{postContent}</div>;
 }
 
 export default PostPage;
